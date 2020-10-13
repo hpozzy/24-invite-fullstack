@@ -30,6 +30,7 @@ export const getInvites = () => (dispatch) => {
 export const goingUserAsync = (user) => (dispatch) => {
   axios.post(`/api/going/`, user).then((r) => dispatch(yesGoing(r.data)))
 }
+
 export const personnotGoingAsync = (user) => (dispatch) => {
   axios.post(`/api/notgoing/`, user).then((r) => dispatch(notComing(r.data)))
 }
