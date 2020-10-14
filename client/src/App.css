@@ -66,3 +66,19 @@
   display: flex;
   flex-wrap: wrap;
 }
+
+.headerGoing {
+  text-decoration: none;
+}
+
+.headerNotGoing {
+  text-decoration: none;
+}
+
+.headerGoing:visited {
+  color: black;
+}
+
+.headerNotGoing:visited {
+  color: black;
+}

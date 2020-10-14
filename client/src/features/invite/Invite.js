@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react"
 import { useSelector, useDispatch } from "react-redux"
+import { BrowserRouter as Router, Route, Link } from "react-router-dom"
 import {
   getInvites,
   selectInvitee,
@@ -10,6 +11,7 @@ import {
   display,
   yesGoing,
   notComing,
+  notgoingUserAsync,
 } from "./inviteSlice"
 
 export function Invite() {
@@ -33,8 +35,12 @@ export function Invite() {
 
   return (
     <div>
-      Going: {invitee.length}
-      Not Going: {invitee.length}
+      <Link to={"/api/going/"} className="headerGoing">
+        Going: {selectGoing.length}
+      </Link>
+      <Link to={"/api/notgoing/"} className="headerNotGoing">
+        Not Going: {personnotGoingAsync.length}
+      </Link>
       <div className="randomUser">
         <div className="randomUser-img">
           <img className="randomUser-thumb" src={invitee.pic} />
@@ -52,20 +58,24 @@ export function Invite() {
         </div>
         <div className="goingOrNot">
           <div>
-            <button
-              className="notGoing"
-              onClick={() => dispatch(personnotGoingAsync(invitee))}
-            >
-              x
-            </button>
+            <form>
+              <button
+                className="notGoing"
+                onClick={() => dispatch(personnotGoingAsync(invitee))}
+              >
+                x
+              </button>
+            </form>
           </div>
           <div>
-            <button
-              className="yesGoing"
-              onClick={() => dispatch(goingUserAsync(invitee))}
-            >
-              ✓
-            </button>
+            <form>
+              <button
+                className="yesGoing"
+                onClick={() => dispatch(goingUserAsync(invitee))}
+              >
+                ✓
+              </button>
+            </form>
           </div>
         </div>
       </div>

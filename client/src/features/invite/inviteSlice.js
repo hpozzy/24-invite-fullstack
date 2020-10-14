@@ -5,7 +5,7 @@ export const inviteSlice = createSlice({
   name: "invites",
   initialState: {
     invitee: {},
-    going: [0],
+    going: [],
     notGoing: [],
   },
   reducers: {
