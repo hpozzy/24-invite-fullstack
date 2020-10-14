@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Route, Link } from "react-router-dom"
 import {
   getInvites,
   selectInvitee,
-  selectGoing,
+  // selectGoing,
   selectNotGoing,
   goingUserAsync,
   personnotGoingAsync,
@@ -13,12 +13,14 @@ import {
   notComing,
   notgoingUserAsync,
 } from "./inviteSlice"
+import { selectGoing } from "./goingSlice"
 
 export function Invite() {
   const invitee = useSelector(selectInvitee)
-  const goingPerson = useSelector(selectGoing)
+  // const goingPerson = useSelector(selectGoing)
+  const peopleAttending = useSelector(selectGoing)
+  console.log(peopleAttending)
   const notGoing = useSelector(selectNotGoing)
-
   const dispatch = useDispatch()
 
   useEffect(() => {
@@ -31,16 +33,18 @@ export function Invite() {
 
   // useEffect(() => {
   //   dispatch(personnotGoingAsync())
-  // }, [])
+  // })
 
   return (
     <div>
-      <Link to={"/api/going/"} className="headerGoing">
-        Going: {selectGoing.length}
-      </Link>
-      <Link to={"/api/notgoing/"} className="headerNotGoing">
-        Not Going: {personnotGoingAsync.length}
-      </Link>
+      <div className="frontpage-header">
+        <Link to={"/api/going/"} className="headerGoing">
+          Going: {peopleAttending.length}
+        </Link>
+        <Link to={"/api/notgoing/"} className="headerNotGoing">
+          Not Going: {notGoing.length}
+        </Link>
+      </div>
       <div className="randomUser">
         <div className="randomUser-img">
           <img className="randomUser-thumb" src={invitee.pic} />

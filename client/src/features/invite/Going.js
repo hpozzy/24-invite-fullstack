@@ -4,6 +4,7 @@ import { selectGoing, goingUserAsync } from "./goingSlice"
 
 export function Going() {
   const goingPerson = useSelector(selectGoing)
+  console.log(goingPerson.length)
   const dispatch = useDispatch()
 
   useEffect(() => {
@@ -16,7 +17,7 @@ export function Going() {
       <h2>Going</h2>
       <div className="going">
         {goingPerson.map((item) => (
-          <div className="randomUser">
+          <div className="randomUser" key={item.name}>
             <div className="randomUser-img">
               <img className="randomUser-thumb" src={item.pic} />
             </div>
